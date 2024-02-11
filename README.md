@@ -90,6 +90,28 @@ plt.xlabel('Month')
 
 
 
+### Q2: Calculate the City with highest sales values
+
+#### Getting City column from Purchase Address column using apply()
+```python
+all_data['City'] = all_data['Purchase Address'].apply(lambda x: x.split(",")[1].strip())
+all_data.head()
+```
+```python
+results = all_data.groupby('city').sum('Total sales')
+```
+
+![Screenshot (72)](https://github.com/siddjoshi19/Data-Analysis-and-visualization/assets/89629408/5284e6c2-8ef7-4f3b-bc42-df965007aa06)
+
+```python
+cities=[city for city, df in all_data.groupby('city')]
+
+plt.bar(cities,results['Total sales'])
+plt.xticks(rotation='vertical', size=8)
+plt.show()
+```
+![Screenshot (73)](https://github.com/siddjoshi19/Data-Analysis-and-visualization/assets/89629408/9ff82930-d1c9-4013-9236-67deac5dbeeb)
+
 
 
 
